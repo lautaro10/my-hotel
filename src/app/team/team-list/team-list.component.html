@@ -1,1 +1,6 @@
 <h1>Team list</h1>
+<div *ngFor="let team of teams | async">
+  <span>{{ team.name }}</span>
+</div>
+
+<button (click)="deleteTeam()">Eliminar equipo</button>
