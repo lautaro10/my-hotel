@@ -1,6 +1,5 @@
 <h1 *ngIf="isEdition()">Editar equipo</h1>
 <h1 *ngIf="!isEdition()">Agregar equipo</h1>
-
 <div class="form">
   <form [formGroup]="teamForm" class="form-container">
     <mat-form-field class="form-field">
@@ -34,6 +33,12 @@
           (matChipInputTokenEnd)="addIdol($event)"
         />
       </mat-chip-list>
+      <mat-icon
+        matSuffix
+        class="my-icon"
+        [myTooltip]="'Agregue hasta 5 jugadores ídolos de la institución'"
+        >help</mat-icon
+      >
     </mat-form-field>
     <div class="button-wrapper">
       <button mat-flat-button (click)="cancelEvent()">Cancelar</button>

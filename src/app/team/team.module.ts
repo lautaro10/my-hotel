@@ -12,9 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
+import { MyTooltipDirective } from '../directives/tooltip.directive';
 
 @NgModule({
-  declarations: [TeamFormComponent, TeamListComponent],
+  declarations: [TeamFormComponent, TeamListComponent, MyTooltipDirective],
   imports: [
     CommonModule,
     TeamRoutingModule,
