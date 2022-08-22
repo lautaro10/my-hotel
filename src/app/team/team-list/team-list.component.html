@@ -54,7 +54,9 @@
         Idolos
       </th>
       <td mat-cell *matCellDef="let element">
-        <span *ngFor="let idol of element.idolPlayers">{{ idol }} , </span>
+        <mat-chip *ngFor="let idol of element.idolPlayers" class="chip">
+          {{ idol }}
+        </mat-chip>
       </td>
     </ng-container>
 
