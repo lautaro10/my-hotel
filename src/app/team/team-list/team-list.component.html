@@ -7,7 +7,16 @@
 </div>
 
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort style="width: 100%">
+  <mat-form-field appearance="standard" class="filter">
+    <mat-label>Filtrar</mat-label>
+    <input
+      matInput
+      (keyup)="filterData($event)"
+      placeholder="Filtrar datos"
+      #input
+    />
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" matSort class="table-wrap">
     <ng-container matColumnDef="id">
       <th
         mat-header-cell
@@ -89,8 +98,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-  <div *ngIf="dataSource.data.length === 0" class="empty-table">
-    No hay equipos cargados
+  <div *ngIf="dataSource.filteredData.length === 0" class="empty-table">
+    No se encontraron equipos
   </div>
   <mat-paginator [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
 </div>

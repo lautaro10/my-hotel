@@ -42,6 +42,14 @@ export class TeamListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  filterData(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
   deleteTeam(team: Team) {
     this.store.dispatch(new DeleteTeam(team.id));
   }
