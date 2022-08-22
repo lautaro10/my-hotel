@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Team } from '../models/team.model';
 import { AddTeam, UpdateTeam } from '../store/actions/team.action';
@@ -9,7 +9,19 @@ import { AddTeam, UpdateTeam } from '../store/actions/team.action';
   templateUrl: './team-form.component.html',
 })
 export class TeamFormComponent {
-  constructor(private store: Store, private router: Router) {}
+  dataToEdit: Team;
+
+  constructor(
+    private store: Store,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.route.queryParams.subscribe((params: Params) => {
+      this.dataToEdit = params as Team;
+    });
+  }
 
   addTeam() {
     const teamExample: Team = {
