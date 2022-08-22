@@ -9,6 +9,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [TeamFormComponent, TeamListComponent],
@@ -20,7 +23,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatSortModule,
     MatButtonModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
 })
 export class TeamModule {}

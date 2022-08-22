@@ -17,7 +17,7 @@ const spanishRangeLabel = (page: number, pageSize: number, length: number) => {
   return `${startIndex + 1} - ${endIndex} de ${length}`;
 };
 
-export function getSpanishPaginatorIntl() {
+export const getSpanishPaginatorIntl = () => {
   const paginatorIntl = new MatPaginatorIntl();
 
   paginatorIntl.itemsPerPageLabel = 'Items por página:';
@@ -26,4 +26,4 @@ export function getSpanishPaginatorIntl() {
   paginatorIntl.getRangeLabel = spanishRangeLabel;
 
   return paginatorIntl;
-}
+};

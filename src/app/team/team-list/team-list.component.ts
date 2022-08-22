@@ -23,8 +23,8 @@ export class TeamListComponent implements OnInit {
     'id',
     'name',
     'country',
-    'createdAt',
     'idolPlayers',
+    'createdAt',
     'actions',
   ];
 

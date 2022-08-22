@@ -32,18 +32,6 @@
       <td mat-cell *matCellDef="let element">{{ element.name }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="createdAt">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by createdAt"
-      >
-        Fecha de creación
-      </th>
-      <td mat-cell *matCellDef="let element">{{ element.createdAt }}</td>
-    </ng-container>
-
     <ng-container matColumnDef="country">
       <th
         mat-header-cell
@@ -67,6 +55,20 @@
       </th>
       <td mat-cell *matCellDef="let element">
         <span *ngFor="let idol of element.idolPlayers">{{ idol }} , </span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdAt">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by createdAt"
+      >
+        Fecha de creación
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.createdAt | date: "dd-MM-yy hh:mm a" }}
       </td>
     </ng-container>
 

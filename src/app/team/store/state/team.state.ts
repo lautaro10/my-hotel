@@ -26,8 +26,16 @@ export class TeamState {
     { payload }: AddTeam
   ) {
     const state = getState();
+    const teamList = [...state.teams];
+    const dataToAdd: Team = {
+      id: teamList.length + 1,
+      createdAt: new Date(),
+      name: payload.name,
+      country: payload.country,
+      idolPlayers: payload.idolPlayers,
+    };
     patchState({
-      teams: [...state.teams, payload],
+      teams: [...state.teams, dataToAdd],
     });
   }
 
@@ -38,8 +46,15 @@ export class TeamState {
   ) {
     const state = getState();
     const teamList = [...state.teams];
-    const teamIndex = teamList.findIndex((item) => item.id === id);
-    teamList[teamIndex] = payload;
+    const teamIndex = teamList.findIndex((item) => item.id === Number(id));
+    const dataToEdit: Team = {
+      id: teamList[teamIndex].id,
+      createdAt: teamList[teamIndex].createdAt,
+      name: payload.name,
+      country: payload.country,
+      idolPlayers: payload.idolPlayers,
+    };
+    teamList[teamIndex] = dataToEdit;
     setState({
       ...state,
       teams: teamList,
