@@ -59,6 +59,10 @@ Componente para el manejo de la tabla para mostrar el listado de equipos, con la
 
 Algunas funciones de utilidad para ser usadas en la aplicación
 
+### Mixins
+
+Se agregó este archivo para la utilizacion de breakpoints en la aplicacion (Caso de uso aplicado en el formulario)
+
 
 ## Comentarios
 
@@ -75,3 +79,5 @@ Algunas funciones de utilidad para ser usadas en la aplicación
 ###### Al requerir un arreglo en la carga de datos, se optó por hacerlo mediante un input y en el momento de onblur o enter se agrega un "chip", con la posibilidad de eliminarlo y controlando de que no existan dos elementos iguales
 
 ###### Se utiliza la tabla de angular material para el listado de equipos, utilizando la páginacion, y el ordenamiento de columnas que ésta nos provee
+
+###### Respecto a la tarea para cambiar el color de un input, se optó por cambiar el color del primer input (A color amarillo) cuando se ingresa la palabra River Plate ;)
