@@ -10,6 +10,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { getSpanishPaginatorIntl } from './utils/custom-paginator.intl';
 
+import {
+  MatSnackBarConfig,
+  MatSnackBarModule,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+} from '@angular/material/snack-bar';
+
+const matSnackbarDefaultConfig: MatSnackBarConfig = {
+  verticalPosition: 'top',
+  horizontalPosition: 'right',
+  duration: 4000,
+};
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -19,9 +31,14 @@ import { getSpanishPaginatorIntl } from './utils/custom-paginator.intl';
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     BrowserAnimationsModule,
+    MatSnackBarModule,
   ],
   providers: [
     { provide: MatPaginatorIntl, useValue: getSpanishPaginatorIntl() },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: matSnackbarDefaultConfig,
+    },
   ],
   bootstrap: [AppComponent],
 })

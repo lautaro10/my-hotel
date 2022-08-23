@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -28,13 +29,14 @@ export class TeamListComponent implements OnInit {
     'actions',
   ];
 
-  constructor(private store: Store, private router: Router) {}
+  constructor(
+    private store: Store,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.store.dispatch(new GetTeams());
-  }
-
-  ngAfterViewInit() {
     this.teams.subscribe((data: Team[]) => {
       this.dataSource.data = data;
     });
@@ -51,7 +53,9 @@ export class TeamListComponent implements OnInit {
   }
 
   deleteTeam(team: Team) {
-    this.store.dispatch(new DeleteTeam(team.id));
+    this.store.dispatch(new DeleteTeam(team.id)).subscribe(() => {
+      this._snackBar.open('Equipo eliminado correctamente');
+    });
   }
 
   addTeam() {

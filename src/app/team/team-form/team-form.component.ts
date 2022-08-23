@@ -7,6 +7,7 @@ import { AddTeam, UpdateTeam } from '../store/actions/team.action';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { isEmptyObject } from 'src/app/utils/empty-object';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-team-form',
@@ -23,7 +24,8 @@ export class TeamFormComponent {
     private store: Store,
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -39,6 +41,7 @@ export class TeamFormComponent {
   addTeam() {
     this.teamForm.valid &&
       this.store.dispatch(new AddTeam(this.teamForm.value)).subscribe(() => {
+        this._snackBar.open('Equipo agregado correctamente');
         this.router.navigate(['/']);
       });
   }
@@ -48,6 +51,7 @@ export class TeamFormComponent {
       this.store
         .dispatch(new UpdateTeam(this.teamForm.value, this.dataToEdit.id))
         .subscribe(() => {
+          this._snackBar.open('Equipo editado correctamente');
           this.router.navigate(['/']);
         });
   }
