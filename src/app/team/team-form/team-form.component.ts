@@ -56,8 +56,8 @@ export class TeamFormComponent {
         });
   }
 
-  removeIdol(subject: any) {
-    const index = this.idolsArray.indexOf(subject);
+  removeIdol(idol: string) {
+    const index = this.idolsArray.indexOf(idol);
     if (index >= 0) {
       this.idolsArray.splice(index, 1);
     }
