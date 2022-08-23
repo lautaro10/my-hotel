@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 import { MyTooltipDirective } from './directives/tooltip.directive';
 
 import {
@@ -34,6 +35,7 @@ const matSnackbarDefaultConfig: MatSnackBarConfig = {
     MatChipsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
   ],
   providers: [
     {
@@ -52,6 +54,7 @@ const matSnackbarDefaultConfig: MatSnackBarConfig = {
     MatChipsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
     MyTooltipDirective,
   ],
 })

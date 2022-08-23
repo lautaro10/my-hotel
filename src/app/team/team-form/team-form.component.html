@@ -1,63 +1,69 @@
-<h1 *ngIf="isEdition()">Editar equipo</h1>
-<h1 *ngIf="!isEdition()">Agregar equipo</h1>
-<div class="form">
-  <form [formGroup]="teamForm" class="form-container">
-    <mat-form-field class="form-field">
-      <input matInput placeholder="Nonbre del equipo" formControlName="name" />
-      <mat-error *ngIf="teamForm.controls['name'].hasError('required')">
-        El nombre del equipo es requerido
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="form-field">
-      <input matInput placeholder="País" formControlName="country" />
-      <mat-error *ngIf="teamForm.controls['country'].hasError('required')">
-        El país del equipo es requerido
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="form-field">
-      <mat-chip-list #chipList>
-        <mat-chip
-          *ngFor="let idolsArray of idolsArray"
-          [selectable]="true"
-          [removable]="true"
-          (removed)="removeIdol(idolsArray)"
-        >
-          {{ idolsArray }}
-          <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip>
+<mat-card>
+  <mat-card-title *ngIf="isEdition()">Editar equipo</mat-card-title>
+  <mat-card-title *ngIf="!isEdition()">Agregar equipo</mat-card-title>
+  <div class="form">
+    <form [formGroup]="teamForm" class="form-container">
+      <mat-form-field class="form-field">
         <input
-          placeholder="Jugadores ídolos"
-          [matChipInputFor]="chipList"
-          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-          [matChipInputAddOnBlur]="true"
-          (matChipInputTokenEnd)="addIdol($event)"
+          matInput
+          placeholder="Nombre del equipo"
+          formControlName="name"
         />
-      </mat-chip-list>
-      <mat-icon
-        matSuffix
-        class="my-icon"
-        [myTooltip]="'Agregue hasta 5 jugadores ídolos de la institución'"
-        >help</mat-icon
-      >
-    </mat-form-field>
-    <div class="button-wrapper">
-      <button mat-flat-button (click)="cancelEvent()">Cancelar</button>
-      <button
-        *ngIf="!isEdition()"
-        mat-flat-button
-        color="primary"
-        (click)="addTeam()"
-      >
-        Agregar
-      </button>
-      <button
-        *ngIf="isEdition()"
-        mat-flat-button
-        color="primary"
-        (click)="updateTeam()"
-      >
-        Editar
-      </button>
-    </div>
-  </form>
-</div>
+        <mat-error *ngIf="teamForm.controls['name'].hasError('required')">
+          El nombre del equipo es requerido
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <input matInput placeholder="País" formControlName="country" />
+        <mat-error *ngIf="teamForm.controls['country'].hasError('required')">
+          El país del equipo es requerido
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-chip-list #chipList>
+          <mat-chip
+            *ngFor="let idolsArray of idolsArray"
+            [selectable]="true"
+            [removable]="true"
+            (removed)="removeIdol(idolsArray)"
+          >
+            {{ idolsArray }}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="Jugadores ídolos"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="true"
+            (matChipInputTokenEnd)="addIdol($event)"
+          />
+        </mat-chip-list>
+        <mat-icon
+          matSuffix
+          class="my-icon"
+          [myTooltip]="'Agregue hasta 5 jugadores ídolos de la institución'"
+          >help</mat-icon
+        >
+      </mat-form-field>
+      <div class="button-wrapper">
+        <button mat-stroked-button (click)="cancelEvent()">Cancelar</button>
+        <button
+          *ngIf="!isEdition()"
+          mat-flat-button
+          color="primary"
+          (click)="addTeam()"
+        >
+          Agregar
+        </button>
+        <button
+          *ngIf="isEdition()"
+          mat-flat-button
+          color="primary"
+          (click)="updateTeam()"
+        >
+          Editar
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-card>
