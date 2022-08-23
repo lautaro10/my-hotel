@@ -3,7 +3,10 @@
   <mat-card-title *ngIf="!isEdition()">Agregar equipo</mat-card-title>
   <div class="form">
     <form [formGroup]="teamForm" class="form-container">
-      <mat-form-field class="form-field">
+      <mat-form-field
+        class="form-field"
+        [ngClass]="{ mark: teamForm.controls['name'].value == 'River Plate' }"
+      >
         <input
           matInput
           placeholder="Nombre del equipo"
